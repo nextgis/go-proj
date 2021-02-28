@@ -1,3 +1,3 @@
-module github.com/omniscale/go-proj
+module github.com/nextgis/go-proj
 
-go 1.12
+go 1.16

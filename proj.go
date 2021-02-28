@@ -72,7 +72,7 @@ func New(init string) (*Proj, error) {
 	if ctx == nil {
 		errnoRef := C.pj_get_errno_ref()
 		if errnoRef == nil {
-			return nil, errors.New("unknown error on pj_ctx_alloc")
+			return nil, errors.New("Unknown error on pj_ctx_alloc")
 		}
 		return nil, errors.New(C.GoString(C.pj_strerrno(*errnoRef)))
 	}
@@ -112,10 +112,10 @@ func (p *Proj) Transform(dst *Proj, xs, ys []float64) error {
 		return errors.New("missing/invalid projection")
 	}
 	if dst == nil {
-		return errors.New("missing/invalid dst projection")
+		return errors.New("Missing or invalid dst projection")
 	}
 	if len(xs) != len(ys) {
-		return errors.New("number of x and y coordinates differs")
+		return errors.New("Number of x and y coordinates differs")
 	}
 	if xs == nil || ys == nil {
 		return nil
@@ -137,7 +137,7 @@ func (p *Proj) Transform(dst *Proj, xs, ys []float64) error {
 	if r != 0 {
 		errnoRef := C.pj_get_errno_ref()
 		if errnoRef == nil {
-			return errors.New("unknown error")
+			return errors.New("Unknown error")
 		}
 		return errors.New(C.GoString(C.pj_strerrno(*errnoRef)))
 	}
